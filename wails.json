@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "assetdir": "frontend/src",
+  "frontend:build": "",
+  "frontend:install": "",
+  "frontend:dev": "",
+  "wailsjsdir": "./frontend",
+  "version": "2",
+  "Path": "",
+  "BuildDir": "",
+  "outputfilename": "test",
+  "OutputType": "",
+  "Platform": "",
+  "Author": {
+    "name": "Adam Shelton",
+    "email": "adamshelton@rti.org"
+  },
+  "debounceMS": 100,
+  "devserverurl": "http://localhost:34115",
+  "appargs": ""
+}

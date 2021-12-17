@@ -5,5 +5,11 @@ build/bin
 .idea
 .vscode
 
+.DS_Store
+
+build
+
+
+
 # The black hole that is...
 node_modules

@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
 // App struct
@@ -34,9 +33,5 @@ func (b *App) shutdown(ctx context.Context) {
 
 // Greet returns a greeting for the given name
 func (b *App) Greet(name string) string {
-	path, err := runtime.OpenFileDialog(b.ctx, runtime.OpenDialogOptions{})
-	if err != nil {
-		runtime.LogError(b.ctx, err.Error())
-	}
-	return fmt.Sprintf("Hello %s, you opened this %s", name, path)
+	return fmt.Sprintf("Hello %s", name)
 }

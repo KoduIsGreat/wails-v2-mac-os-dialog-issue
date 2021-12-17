@@ -2,6 +2,9 @@ package main
 
 import (
 	"embed"
+	"github.com/wailsapp/wails/v2/pkg/menu"
+	"github.com/wailsapp/wails/v2/pkg/menu/keys"
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 	"log"
 
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
@@ -31,6 +34,28 @@ func main() {
 		MinHeight:         570,
 		MaxWidth:          1280,
 		MaxHeight:         740,
+		Menu: menu.NewMenuFromItems(menu.SubMenu("File", menu.NewMenuFromItems(
+			menu.Text("Save", keys.CmdOrCtrl("s"), func(_ *menu.CallbackData) {
+				path, err := runtime.SaveFileDialog(app.ctx, runtime.SaveDialogOptions{
+					DefaultDirectory:           "",
+					DefaultFilename:            "test.yaml",
+					Title:                      "Save",
+					Filters:                    nil,
+					ShowHiddenFiles:            false,
+					CanCreateDirectories:       false,
+					TreatPackagesAsDirectories: false,
+				})
+				runtime.LogInfo(app.ctx, path)
+				if err != nil {
+					runtime.LogError(app.ctx, err.Error())
+				}
+				runtime.LogInfo(app.ctx, path)
+			}),
+			menu.Separator(),
+			menu.Text("Quit", keys.CmdOrCtrl("q"), func(_ *menu.CallbackData) {
+				runtime.Quit(app.ctx)
+			}),
+		))),
 		DisableResize:     false,
 		Fullscreen:        false,
 		Frameless:         false,

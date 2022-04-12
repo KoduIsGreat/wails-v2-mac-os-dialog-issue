@@ -1,22 +1,14 @@
-interface Position {
+export interface Position {
     x: number;
     y: number;
 }
 
-interface Size {
+export interface Size {
     w: number;
     h: number;
 }
 
-interface RGBA {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
-}
-
-
-interface runtime {
+export interface runtime {
     EventsEmit(eventName: string, data?: any): void;
 
     EventsOn(eventName: string, callback: (data?: any) => void): void;
@@ -45,7 +37,7 @@ interface runtime {
 
     WindowFullscreen(): void;
 
-    WindowUnFullscreen(): void;
+    WindowUnfullscreen(): void;
 
     WindowSetSize(width: number, height: number): Promise<Size>;
 
@@ -65,13 +57,15 @@ interface runtime {
 
     WindowMaximise(): void;
 
+    WindowToggleMaximise(): void;
+
     WindowUnmaximise(): void;
 
     WindowMinimise(): void;
 
     WindowUnminimise(): void;
 
-    WindowSetRGBA(rgba: RGBA): void;
+    WindowSetRGBA(R: number, G: number, B: number, A: number): void;
 
     BrowserOpenURL(url: string): void;
 
@@ -83,5 +77,3 @@ declare global {
         runtime: runtime;
     }
 }
-
-export { };

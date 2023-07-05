@@ -3,12 +3,13 @@ package main
 import (
 	"embed"
 	"fmt"
+	"log"
+
 	"github.com/leaanthony/clir"
 	"github.com/wailsapp/wails/v2/pkg/menu"
 	"github.com/wailsapp/wails/v2/pkg/menu/keys"
 	"github.com/wailsapp/wails/v2/pkg/options/mac"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
-	"log"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/logger"
@@ -33,6 +34,7 @@ func main() {
 	uiCmd := cli.NewSubCommand("ui", "a ui command")
 	uiCmd.Action(func() error {
 		app := NewApp()
+
 		return wails.Run(&options.App{
 			Title:     "test",
 			Width:     720,
@@ -68,7 +70,6 @@ func main() {
 			Frameless:         false,
 			StartHidden:       false,
 			HideWindowOnClose: false,
-			RGBA:              &options.RGBA{R: 33, G: 37, B: 43, A: 255},
 			Assets:            assets,
 			LogLevel:          logger.DEBUG,
 			OnStartup:         app.startup,
